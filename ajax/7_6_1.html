@@ -43,7 +43,7 @@
 			document.querySelector('.sel-btn').addEventListener('click',() =>{
 				let pname = document.querySelector('.province').value;
 				let cname = document.querySelector('.city').value;
-			})
+			
 			axios({
 				url:'http://hmajax.itheima.net/api/area',
 				params: {
@@ -56,7 +56,8 @@
 				let theLi = list.map(areaName => `<li class="list-group-item">${areaName}</li>`).join('')
 				console.log(theLi)
 				document.querySelector('.list-group').innerHTML = theLi
-			}
+			})
+			})
 		</script>
 	</body>
 </html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button class='btn'>用户注册</button>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script>
+			document.querySelector('.btn').addEventListener('click',() =>{
+				axios({
+					url: 'http://hmajax.itheima.net/api/register',
+					method: 'post',//默认值为GET
+					data: {
+						username:'iytjinoagfg001',
+						password:'akhzkhorf898'
+					}
+				}).then(result => {
+					console.log(result);
+				})
+			})
+		</script>
+			
+		
+	</body>
+</html>
