@@ -77,15 +77,20 @@
 		<script>
 			//提示框
 			const myAlert = document.querySelector('.alert');
-			// function alertFn(msg,isSuccess) {
-			// 	//显示
-			// 	myAlert.classList.add('show');
-			// 	myAlert.innerText = msg;
-			// 	//文字和背景色
-			// 	console bgStyle = isSuccess ? 'alert-success':'alert-danger'
-			// 	myAlert.classList.add(bgStyle)
+			function alertFn(msg,isSuccess) {
+				//显示
+				myAlert.classList.add('show');
+				myAlert.innerText = msg;
+				//文字和背景色
+				const bgStyle = isSuccess ? 'alert-success':'alert-danger'
+				myAlert.classList.add(bgStyle)
+				setTimeout(() =>{
+					myAlert.classList.remove('show')
+					//避免类名冲突，重置背景色
+					myAlert.classList.remove(bgStyle)
+				},2000)
 				
-			// }
+			}
 			//点击登录
 			document.querySelector('.btn-login').addEventListener('click',() => {
 				//获取输入
@@ -110,7 +115,7 @@
 						password
 					}
 				}).then(result => {
-					alertFn(result.data.message,ture)
+					alertFn(result.data.message,true)
 					console.log(result)
 				}).catch(error => {
 					alertFn(error.response.data.message,false)
