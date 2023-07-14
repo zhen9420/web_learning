@@ -20,8 +20,12 @@
     目标：在点击提交时，使用form-serialize插件，快速收集表单元素值
     1. 把插件引入到自己网页中
   -->
+  
   <script src="./lib/form-serialize.js"></script>
   <script>
+	  // serialize 有两个参数，hash empty
+	  // hash true :返回js对象 false：返回查询字符串
+	  //empty设置是否获取空值
     document.querySelector('.btn').addEventListener('click',() =>{
 		const form = document.querySelector('.example-form');
 		const  data = serialize(form,{hash: true,empty: true});
