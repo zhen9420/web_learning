@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<!-- 
+	1.准备容器（vue管理范围）
+	2.引包
+	3.创建实例
+	4.添加配置项
+	 -->
+	<body>
+		<div id = "app">
+		{{ msg }}
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+		<script>
+			const app = new Vue({
+				//通过el配置选择器，指定Vue管理哪个盒子
+				el:'#app',
+				data:{
+					msg: 'Hello World',
+					count:100
+				}
+			})
+		</script>
+	</body>
+</html>

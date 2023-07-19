@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id ="app">
+			<button  @click = "fn">切换显示隐藏</button>
+			<h v-show="isShow">hello,world</h>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+		<script>
+			const App =new Vue({
+				el: '#app',
+				data:{
+					isShow: true
+				},
+				methods: {
+					fn() {
+						this.isShow = !this.isShow
+					}
+				},
+			})
+		</script>
+	</body>
+</html>

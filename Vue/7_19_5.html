@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="APP">
+			<img :src="imgUrl" :title="msg"/>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+		<script>
+			const app=new Vue({
+				el:'#APP',
+				data:{
+					imgUrl:'./imgs/10-01.png',
+					msg:'猴马'
+				}
+			})
+		</script>
+	</body>
+</html>
