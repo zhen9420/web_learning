@@ -11,6 +11,7 @@
 		 creator
 	 }
  }).then(result => {
+	 
 	 const userObj = result.data.data
 	 //console.log(userObj);
 	 //1.2回显数据
@@ -27,5 +28,35 @@
 		 }else {
 			 document.querySelector(`.${key}`).value = userObj[key]
 		 }
+	 })
+ })
+ document.querySelector(".upload").addEventListener('change', e =>{
+	 const fd = new FormData()
+	 console.log(e.target.files[0]);
+	 fd.append('avatar',e.target.files[0])
+	 fd.append('creator',creator)
+	 axios({
+		 url:'http://hmajax.itheima.net/api/avatar',
+		 method:'put',
+		 data:fd
+	 }).then(result =>{
+		const imgUrl = result.data.data.avatar
+		document.querySelector(".prew").src = imgUrl
+	 })
+ })
+ document.querySelector('.submit').addEventListener('click',()=>{
+	 const userForm = document.querySelector('.user-form')
+	 const userObj = serialize(userForm,{harsh:true,empty:true})
+	 userObj.gender = +userObj.gender
+	 userObj.creator = creator
+	 console.log(userObj);
+	 axios({
+		 url:'http://hmajax.itheima.net/api/settings',
+		 method:'put',
+		 data:userObj
+	  }).then(result =>{
+		 const toastDom = document.querySelector('.my-toast')
+		 const toast = new bootstrap.Toast(toastDom)
+		 toast.show()
 	 })
  })
