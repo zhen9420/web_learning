@@ -1,28 +1,29 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-		<script src="echarts.js"></script>
-	</head>
-	<body>
-		<body>
-		  <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
-		  <div id="main" style="width: 600px;height:400px;"></div>
-		  <!DOCTYPE html>
-		  <html>
-		    <head>
-		      <meta charset="utf-8" />
-		      <title>ECharts</title>
+	<html>
+		<head>
+			<meta charset="utf-8" />
+			<title>ECharts</title>
 		      <!-- 引入刚刚下载的 ECharts 文件 -->
-		      <script src="echarts.js"></script>
-		    </head>
-		    <body>
+			<script src="echarts.js"></script>
+		</head>
+		<body>
 		      <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
 		      <div id="main" style="width: 600px;height:400px;"></div>
 		      <script type="text/javascript">
 		        // 基于准备好的dom，初始化echarts实例
 		        var myChart = echarts.init(document.getElementById('main'));
+				var itemStyle = {
+					normal: {
+						
+						color: '#fff'
+					},
+					emphasis: {
+						borderWidth: 1,
+						borderType: 'dashed',
+						borderColor: 'blue',
+						color: '#fff'
+					}
+				};
 		  
 		        // 指定图表的配置项和数据
 		        var option = {
@@ -31,32 +32,42 @@
 				data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 				},
 				yAxis: {
-				type: 'value'
+				type: 'value',
+				splitLine: { show: false, }, //y轴横线
 				},
   series: [
+	   
     {
 		name:'2023',
       data: [120, 200, 150, 80, 70, 110, 130],
+	  color:'blue',
+	 // color: ['rgb(85, 153, 254)', 'rgb(68, 203, 187, )'],
       type: 'bar',
-	  barWidth: '40%',
+	  barWidth: '20%',
+	 
     },
      {
 		 name:'预期',
       data: [130, 202, 180, 60, 90, 200, 130],
       type: 'bar',
-      barGap:'-113%',//移动第二个柱子的位置实现重叠
+      barGap:'-128%',//移动第二个柱子的位置实现重叠
       z:'-1',//改变这根柱子的层级使这根柱子在下面
-	  barWidth: '50%',
+	  barWidth: '30%',
+	 itemStyle: itemStyle,
+	
     }
   ]
+  
 };
+
 
 		  
 		        // 使用刚指定的配置项和数据显示图表。
 		        myChart.setOption(option);
+				// this.myChart.on('mouseover', (params) => {
+				//         this.itemStyle.color = 'red'
+				//       })
+
 		      </script>
 		    </body>
 		  </html>
-		</body>
-	</body>
-</html>

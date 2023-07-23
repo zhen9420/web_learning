@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="echarts.js"></script>
+	</head>
+	<body>
+		<body>
+		  <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+		  <div id="main" style="width: 600px;height:400px;"></div>
+		  <!DOCTYPE html>
+		  <html>
+		    <head>
+		      <meta charset="utf-8" />
+		      <title>ECharts</title>
+		      <!-- 引入刚刚下载的 ECharts 文件 -->
+		      <script src="echarts.js"></script>
+		    </head>
+		    <body>
+		      <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+		      <div id="main" style="width: 600px;height:400px;"></div>
+		      <script type="text/javascript">
+		        // 基于准备好的dom，初始化echarts实例
+		        var myChart = echarts.init(document.getElementById('main'));
+		  
+		        // 指定图表的配置项和数据
+		        option = {
+		          legend: {},
+		          tooltip: {},
+		          dataset: {
+		            source: [
+		              ['product', '2012', '2013', '2014', '2015'],
+		              ['Matcha Latte', 41.1, 30.4, 65.1, 53.3],
+		              ['Milk Tea', 86.5, 92.1, 85.7, 83.1],
+		              ['Cheese Cocoa', 24.1, 67.2, 79.5, 86.4]
+		            ]
+		          },
+		          xAxis: [
+		            { type: 'category', gridIndex: 0 },
+		            { type: 'category', gridIndex: 1 }
+		          ],
+		          yAxis: [{ gridIndex: 0 }, { gridIndex: 1 }],
+		          grid: [{ left: '55%' }, { right: '55%' }],
+		          series: [
+		            // These series are in the first grid.
+		            { type: 'bar',  xAxisIndex: 1, yAxisIndex: 1 },
+		            { type: 'bar',  xAxisIndex: 1, yAxisIndex: 1 },
+		            { type: 'bar',  xAxisIndex: 1, yAxisIndex: 1 },
+		            // These series are in the second grid.
+		            { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 },
+		            { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 },
+		            { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 },
+		            { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 }
+		          ]
+		        };
+
+		  
+		        // 使用刚指定的配置项和数据显示图表。
+		        myChart.setOption(option);
+		      </script>
+		    </body>
+		  </html>
+		</body>
+	</body>
