@@ -13,16 +13,20 @@
 		        // 基于准备好的dom，初始化echarts实例
 		        var myChart = echarts.init(document.getElementById('main'));
 				var itemStyle = {
-					normal: {
+					
 						
-						color: '#fff'
-					},
-					emphasis: {
-						borderWidth: 1,
+				
+						borderWidth: 2,
 						borderType: 'dashed',
 						borderColor: 'blue',
 						color: '#fff'
-					}
+					
+					// emphasis: {
+					// 	borderWidth: 1,
+					// 	borderType: 'dashed',
+					// 	borderColor: 'blue',
+					// 	color: '#fff'
+					// }
 				};
 		  
 		        // 指定图表的配置项和数据
@@ -35,27 +39,34 @@
 				type: 'value',
 				splitLine: { show: false, }, //y轴横线
 				},
+				legend:{},
   series: [
-	   
-    {
-		name:'2023',
-      data: [120, 200, 150, 80, 70, 110, 130],
-	  color:'blue',
-	 // color: ['rgb(85, 153, 254)', 'rgb(68, 203, 187, )'],
-      type: 'bar',
-	  barWidth: '20%',
-	 
-    },
-     {
-		 name:'预期',
+	  {
+		 name:'目标',
       data: [130, 202, 180, 60, 90, 200, 130],
       type: 'bar',
-      barGap:'-128%',//移动第二个柱子的位置实现重叠
-      z:'-1',//改变这根柱子的层级使这根柱子在下面
-	  barWidth: '30%',
-	 itemStyle: itemStyle,
+     
+      z:'-1',
+	  barWidth: '50%',
 	
-    }
+	  itemStyle: itemStyle,
+	
+    },
+	 
+	   
+    {
+		name:'2023年计价工作量',
+      data: [120, 200, 150, 80, 70, 110, 130],
+	  color:'blue',
+	 
+      type: 'bar',
+	 barWidth: '30%',
+	 barGap:'-80%',
+	  // barCategoryGap:'200%',
+	  	  //barGap:'100%
+	 
+    },
+    
   ]
   
 };

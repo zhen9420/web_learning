@@ -11,6 +11,8 @@
   <div id="app">
     <h3>小黑的书架</h3>
     <ul>
+		//key:给元素添加的唯一标识 不加key：v-for的默认行为会尝试原地修改元素（就地复用）
+		//key的值只能是字符串或是数字类型且具有唯一性，推荐使用id而不是index作为key，因为index会变化
       <li v-for="(item,index) in booksList" :key="item.id">
         <span>{{item.name}}</span>
         <span>{{item.author}}</span>

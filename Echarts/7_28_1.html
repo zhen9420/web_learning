@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="echarts.js"></script>
+		<title></title>
+	</head>
+	<body>
+		<div id="main" style="width: 600px;height:400px;"></div>
+		<script type="text/javascript">
+		  // 基于准备好的dom，初始化echarts实例
+		  var myChart = echarts.init(document.getElementById('main'));
+		  var monthD = ['项目一','项目二','项目三','项目四','项目五']
+		  var A = [100,200,300,500,150]
+		  var B = [200,100,150,500,250]
+		   //var myChart = echarts.init(document.getElementById('echarts'));
+		          // 显示标题，图例和空的坐标
+		          myChart.showLoading();    //数据加载完之前先显示一段简单的loading动画
+		          myChart.setOption({
+					   
+		              title: {
+		                  text: ''
+		              },
+		              tooltip: {
+		                  trigger: 'axis',
+		                  show:true,
+		                  formatter: function(params) { //设置滑过显示小圆点以及对应数据的位置 方便看数
+		                      var result = params[0].name+'<br>';
+		                      params.forEach(function(item) {
+		                            result += '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:' + item.color + '"></span>';
+		                            result +=item.seriesName+": "+'<span style="color:#fff">'+ item.data+"</span><br>"
+		                      });
+		   
+		                          return result;
+		                  },
+		              },
+		              grid: {
+		                  left: '0'
+		              },
+		              legend: {
+		                  // data: [
+		                  // //'A**数', 'B**数', 'C**数', '', 'D**数','E**数', 'F**数'
+		                  // ],
+		                  // textStyle:{
+		                  //    color:'#fff'
+		                  // },
+		                  // padding:20,
+		                  // margin:20
+		              },
+		              toolbox: {
+		                  show: false,
+		                  feature: {
+		                      mark: {show: true},
+		                      dataView: {show: true, readOnly: false},
+		                      magicType: {show: true, type: ['line', 'bar']},
+		                      restore: {show: true},
+		                      saveAsImage: {show: true}
+		                  }
+		              },
+		              calculable: true,
+		              grid: {
+		                  y: 70, y2: 30, x2: 60,
+		                  tooltip:{
+		                      show:true
+		                  }
+		              },
+		              yAxis:[{
+						//name:'目标',
+     
+					},
+					{	
+						//name:'实际',
+     
+					}],
+		             
+		   
+		              xAxis: [
+		              //x轴只显示一个就可以 对应 xAxisIndex: 0,A***数           
+		              {
+		                  // axisLabel :{
+		                  //     interval:0,
+		                  //     textStyle: {
+		                  //         color: '#fff'
+		                  //     },
+		                  //     show:true
+		                  // },
+		                  // axisTick: {
+		                  //     show: false
+		                  // },
+		                  // axisLine:{
+		                  //     lineStyle:{
+		                  //         color:'#fff'
+		                  //     },
+		                  //     //show:false
+		                  // },
+		                  data: monthD, // 日期X轴 
+		              },
+		              //对应 xAxisIndex: 1,B***数 
+		               {
+		                  type: 'category',
+		                  axisLine: {show: false},
+		                  axisTick: {show: false},
+		                  axisLabel: {show: false},
+		                  splitArea: {show: false},
+		                  splitLine: {show: false},
+		                  data: monthD
+		              },
+		             
+		              ],
+		              series: [
+		              {
+		                  name: '目标',
+		                  type: 'bar',
+		                  barGap: '0',
+		                  barWidth: '60%',
+		                  itemStyle: {normal: {color: '#55aaff' }},
+		                  data: A
+		              },
+		              {
+		                  name: '实际',
+		                  type: 'bar',
+		                  barGap: '0',
+		                  barWidth: '50%',
+		                  xAxisIndex: 1,
+		                  itemStyle: {
+		                      normal: {
+		                          color: '#00557f'
+		                        
+		                      }
+		                  },
+		                  data: B
+		              },
+		            
+		   
+		                      ]
+		  })
+		   
+		          myChart.hideLoading(); //隐藏加载动画             
+		  </script>
+	</body>
+</html>

@@ -8,7 +8,7 @@
 	<body>
 		<body>
 		  <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
-		  <div id="main" style="width: 600px;height:400px;"></div>
+		  <div id="main" style="width: 1000px;height:1000px;"></div>
 		  <!DOCTYPE html>
 		  <html>
 		    <head>
@@ -25,35 +25,254 @@
 		        var myChart = echarts.init(document.getElementById('main'));
 		  
 		        // 指定图表的配置项和数据
-		        option = {
-		          legend: {},
-		          tooltip: {},
-		          dataset: {
-		            source: [
-		              ['product', '2012', '2013', '2014', '2015'],
-		              ['Matcha Latte', 41.1, 30.4, 65.1, 53.3],
-		              ['Milk Tea', 86.5, 92.1, 85.7, 83.1],
-		              ['Cheese Cocoa', 24.1, 67.2, 79.5, 86.4]
-		            ]
-		          },
-		          xAxis: [
-		            { type: 'category', gridIndex: 0 },
-		            { type: 'category', gridIndex: 1 }
-		          ],
-		          yAxis: [{ gridIndex: 0 }, { gridIndex: 1 }],
-		          grid: [{ left: '55%' }, { right: '55%' }],
-		          series: [
-		            // These series are in the first grid.
-		            { type: 'bar',  xAxisIndex: 1, yAxisIndex: 1 },
-		            { type: 'bar',  xAxisIndex: 1, yAxisIndex: 1 },
-		            { type: 'bar',  xAxisIndex: 1, yAxisIndex: 1 },
-		            // These series are in the second grid.
-		            { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 },
-		            { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 },
-		            { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 },
-		            { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 }
-		          ]
-		        };
+		       var option = {
+		            //标题
+		             title : [{
+		              text: '投资报表',
+		              left: '25%',
+		               textAlign: 'center',
+		           },{
+		              text: '投资报表',
+		              left: '75%',
+		               textAlign: 'center',
+		           },{
+		              text: '投资报表',
+		              left: '25%',
+		               top: '28%',
+		               textAlign: 'center',
+		           },{
+		              text: '投资报表',
+		              left: '75%',
+		               top: '28%',
+		               textAlign: 'center',
+		           },{
+		              text: '投资报表',
+		               top: '60%',
+		               left: 'center',
+		           }]
+		       
+		           ,tooltip: {
+		               trigger: 'axis',
+		               axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+		                   type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+		               }
+		           },
+		          legend:[ {
+		                data: ['上报省政府年度计划 ','集团下达年度计划','实际完成投资'],
+		                left: '10%',
+		                top :'3%'
+		           },
+				   // {
+		     //            data: ['上报省政府年度计划 ','集团下达年度计划','实际完成投资'],
+		     //            left: '60%',
+		     //            top :'3%'
+		     //       },{
+		     //            data: ['上报省政府年度计划 ','集团下达年度计划','实际完成投资'],
+		     //            left: '10%',
+		     //            top :'31%'
+		     //       }, {
+		     //            data: ['上报省政府年度计划 ','集团下达年度计划','实际完成投资'],
+		     //            left: '60%',
+		     //            top :'31%'
+		     //       }, {
+		     //            data: ['上报省政府年度计划 ','集团下达年度计划','实际完成投资'],
+		     //            top :'63%'
+		     //       }
+		           ],
+		       
+		           xAxis: [
+		           {
+		               type: 'category',
+		               data: ['1月','2月','3月'],
+		               gridIndex: 0    
+		               },
+		               {
+		               type: 'category',
+		               data: ['1月','2月','3月'],
+		               gridIndex: 1        
+		                },{
+		               type: 'category',
+		               data: ['1月','2月','3月'],
+		               gridIndex: 2    
+		               },
+		               {
+		               type: 'category',
+		               data: ['1月','2月','3月'],
+		               gridIndex: 3        
+		                },{
+		               type: 'category',
+		               data: ['1月','2月','3月'],
+		               gridIndex: 4    
+		               }
+		           ],
+		           yAxis: [
+		               {type: 'value',gridIndex: 0},
+		               {type: 'value',gridIndex: 1},
+		               {type: 'value',gridIndex: 2},
+		               {type: 'value',gridIndex: 3},
+		               {type: 'value',gridIndex: 4}
+		           ],
+		       grid: [{
+		               width: '40%',
+		               bottom:'75%',
+		               left: '7%'
+		               
+		           }, {
+		               width: '40%',
+		               bottom:'75%',
+		               left: '52%'
+		              
+		           }, 
+		           
+		           
+		           {
+		               top: '35%',
+		               width: '40%',
+		                 bottom:'45%',
+		               left: '7%'
+		              
+		           }, {
+		               top: '35%',
+		               width: '40%',
+		               bottom:'45%',
+		               left: '52%'
+		             
+		           },
+		           
+		           {
+		               top: '68%',
+		               width: '93%',
+		               bottom: '6%',
+		               left: '7%'
+		              
+		           }
+		           
+		           
+		           ],
+		           series: [{
+		                 name: '上报省政府年度计划 ',
+		               data: ['100','200','300'],
+		               color:['#14c2c3'],
+		               xAxisIndex: 0,
+		               yAxisIndex: 0,
+		               type: 'bar'
+		               
+		               
+		               
+		           },{
+		                 name: '集团下达年度计划',
+		               data: ['100','200','300'],
+		               color:['#1890ff'],
+		                xAxisIndex: 0,
+		               yAxisIndex: 0,
+		               type: 'bar'
+		           },{
+		                 name: '实际完成投资',
+		               data: ['100','200','300'],
+		               color:['#facc14'],
+		               xAxisIndex: 0,
+		               yAxisIndex: 0,
+		               type: 'bar'
+		           },
+		           
+		           {
+		                 name: '上报省政府年度计划 ',
+		               data: ['100','200','300'],
+		               color:['#14c2c3'],
+		               xAxisIndex: 1,
+		               yAxisIndex: 1,
+		               type: 'bar'
+		               
+		               
+		               
+		           },{
+		                 name: '集团下达年度计划',
+		               data:['100','200','300'],
+		               color:['#1890ff'],
+		                xAxisIndex: 1,
+		               yAxisIndex: 1,
+		               type: 'bar'
+		           },{
+		                 name: '实际完成投资',
+		               data: ['100','200','300'],
+		               color:['#facc14'],
+		               xAxisIndex: 1,
+		               yAxisIndex: 1,
+		               type: 'bar'
+		           },
+		           
+		           {
+		                 name: '上报省政府年度计划 ',
+		               data: ['100','200','300'],
+		               color:['#14c2c3'],
+		               xAxisIndex: 2,
+		               yAxisIndex: 2,
+		               type: 'bar'
+		       
+		           },{
+		                 name: '集团下达年度计划',
+		               data: ['100','200','300'],
+		               color:['#1890ff'],
+		                xAxisIndex: 2,
+		               yAxisIndex: 2,
+		               type: 'bar'
+		           },{
+		                 name: '实际完成投资',
+		               data: ['100','200','300'],
+		               color:['#facc14'],
+		               xAxisIndex: 2,
+		               yAxisIndex: 2,
+		               type: 'bar'
+		           },
+		           {
+		                 name: '上报省政府年度计划 ',
+		               data: ['100','200','300'],
+		               color:['#14c2c3'],
+		               xAxisIndex: 3,
+		               yAxisIndex: 3,
+		               type: 'bar'
+		           },{
+		                 name: '集团下达年度计划',
+		               data: ['100','200','300'],
+		               color:['#1890ff'],
+		                xAxisIndex: 3,
+		               yAxisIndex: 3,
+		               type: 'bar'
+		           },{
+		                 name: '实际完成投资',
+		               data: ['100','200','300'],
+		               color:['#facc14'],
+		               xAxisIndex: 3,
+		               yAxisIndex: 3,
+		               type: 'bar'
+		           },{
+		                 name: '上报省政府年度计划 ',
+		               data: ['100','200','300'],
+		               color:['#14c2c3'],
+		               xAxisIndex: 4,
+		               yAxisIndex: 4,
+		               type: 'bar'
+		               
+		               
+		               
+		           },{
+		                 name: '集团下达年度计划',
+		               data: ['100','200','300'],
+		               color:['#1890ff'],
+		                xAxisIndex: 4,
+		               yAxisIndex: 4,
+		               type: 'bar'
+		           },{
+		                 name: '实际完成投资',
+		               data: ['100','200','300'],
+		               color:['#facc14'],
+		               xAxisIndex: 4,
+		               yAxisIndex: 4,
+		               type: 'bar'
+		           }
+		           
+		           ]
+		       }
 
 		  
 		        // 使用刚指定的配置项和数据显示图表。
