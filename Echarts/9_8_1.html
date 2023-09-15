@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ECharts</title>
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="echarts.js"></script>
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  </head>
+  <body>
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById('main'));
+
+      // 指定图表的配置项和数据
+     myChart.showLoading();
+     $.get( '河南省.json', function (geoJson) {
+       myChart.hideLoading();
+       echarts.registerMap('henan', geoJson);
+       myChart.setOption(
+         (option = {
+           title: {
+             text: '河南省地图',
+             subtext: '数据来自https://www.henan.gov.cn/2021/05-14/2145306.html',
+             
+           },
+           tooltip: {
+             trigger: 'item',
+             formatter: '{b}<br/>{c} (人 / 平方千米)'
+           },
+           toolbox: {
+             show: true,
+             orient: 'vertical',
+             left: 'right',
+             top: 'center',
+             feature: {
+               dataView: { readOnly: false },
+               restore: {},
+               saveAsImage: {}
+             }
+           },
+           visualMap: {
+             min: 100,
+             max: 2000,
+             text: ['High', 'Low'],
+             realtime: false,
+             calculable: true,
+             inRange: {
+               color: ['lightskyblue', 'yellow', 'orangered']
+             }
+           },
+           series: [
+             {
+               name: '河南省各市人口密度',
+               type: 'map',
+               map: 'henan',
+               label: {
+                 show: true
+               },
+               data: [
+                 { name: '郑州市', value: 1665 },
+                 { name: '开封市', value: 770 },
+                 { name: '洛阳市', value: 464 },
+                 { name: '平顶山市', value: 633 },
+                 { name: '安阳市', value: 739 },
+                 { name: '鹤壁市', value: 718 },
+                 { name: '新乡市', value: 758 },
+                 { name: '焦作市', value: 865 },
+                 { name: '濮阳市', value: 901 },
+                 { name: '许昌市', value: 877 },
+                 { name: '漯河市', value: 879 },
+                 { name: '三门峡市', value: 194 },
+                 { name: '南阳市', value: 365 },
+                 { name: '商丘市', value: 730 },
+                 { name: '信阳市', value: 330 },
+                 { name: '周口市', value: 755 },
+                 { name: '驻马店市', value: 467 },
+                 { name: '济源市', value: 377 }
+               ],
+               // 自定义名称映射
+              
+             }
+           ]
+         })
+       );
+     });
+    </script>
+  </body>
+</html>
