@@ -8,7 +8,7 @@
   </head>
   <body>
     <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
-    <div id="main" style="width: 600px;height:400px;"></div>
+    <div id="main" style="width: 800px;height:400px;"></div>
     <script type="text/javascript">
       // 基于准备好的dom，初始化echarts实例
       var myChart = echarts.init(document.getElementById('main'));
@@ -27,24 +27,21 @@
         },
         
         legend: {
-          
+          itemStyle:{
+          	borderType: 'dashed',
+          	borderWidth:'1'
+          }
         },
         xAxis: [
           {
             type: 'category',
             axisLabel: { interval:0 },
 			 
-            data: ['基本科研业务', '科研', '横向科研', '自然科研基金申报', '平台设施', '制修订规程规范标准', '新建、技改、复查计量标准考核', ]
+            data: ['基本科研业务', '科研', '横向科研', '自然科研\n基金申报', '平台设施', '制修订规程\n规范标准', '新建、技改、复查\n计量标准考核', ]
           }
         ],
 		
-		dataZoom:[
-		    {
-		      show: true,
-		      start: 0,
-		      end: 50
-		    }
-		  ],
+		
 
         yAxis: [
           {
