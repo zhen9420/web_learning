@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ECharts</title>
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="echarts.js"></script>
+  </head>
+  <body>
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById('main'));
+		var fontsize = 7;
+      // 指定图表的配置项和数据
+      myChart.setOption({
+      	
+    title: {
+    	show: false,
+    	//text:'收入和差旅费支出合计',
+    	left: 'center',
+    	textStyle: {
+    		fontSize: fontsize + 3,
+    	},
+    	// padding:8,
+    	// top:'5%',
+    },
+    
+    tooltip: {
+    	confine: true,
+    	trigger: 'axis',
+    	textStyle: {
+    		align: 'left',
+    		fontSize: fontsize + 1.5,
+    	},
+    
+    },
+    grid: {
+    	left: '3%',
+    	right: '3%',
+    	top: '22%',
+    	bottom: '6%',
+    	containLabel: true,
+    },
+    legend: {
+    	show: false,
+    	itemHeight: 8,
+    	itemWidth: 18,
+    	// data: ['收入', '差旅费支出'],
+    	top: '15%',
+    	textStyle: {
+    		fontSize: fontsize,
+    	},
+    
+    },
+    xAxis: [{
+    		type: 'category',
+    		axisTick: {
+    			alignWithLabel: true
+    		},
+    		textStyle: {
+    			fontSize: fontsize,
+    		},
+    		// prettier-ignore
+    		data: ["服务不及时率（汇总）","证书"]
+    	},
+    
+    ],
+    yAxis: [{
+    
+    		type: 'value',
+    		// name: '收入\n(万元）',
+    		position: 'left',
+    		alignTicks: true,
+    		axisLine: {
+    			show: true,
+    		},
+    		axisLabel: {
+    			textStyle: {
+    				fontSize: fontsize - 1,
+    			},
+    			formatter: '{value} %',
+    			nameTextStyle: {
+    				fontSize: fontsize,
+    			},
+    		},
+    
+    
+    	},
+    
+    
+    
+    ],
+    series: [{
+    		name: '服务不及时率（汇总）',
+    		type: 'bar',
+    		data: [1,2],
+    	},
+    
+    
+    ]
+      },true);
+
+      // 使用刚指定的配置项和数据显示图表。
+     // myChart.setOption(option);
+    </script>
+  </body>
+</html>

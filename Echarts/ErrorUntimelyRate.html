@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ECharts</title>
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="echarts.js"></script>
+  </head>
+  <body>
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById('main'));
+
+      // 指定图表的配置项和数据
+      myChart.setOption({
+      	
+     title:{
+     	//text:'收入和差旅费支出',
+     	left:'center',
+     	textStyle:{
+     	//fontSize:fontsize+7,
+     },
+     	// padding:8,
+     	// top:'5%',
+     },
+     
+       tooltip: {
+         trigger: 'axis',
+        textStyle: {
+          align: 'left',
+         // fontSize:fontsize+3.7,
+        },
+     	
+       },
+       grid: {
+        left:'3%',
+        right:'3%',
+        top:'22%',
+        bottom:'6%',
+        containLabel:true,
+       },
+       legend: {
+     	  itemHeight:8,
+     	  itemWidth:18,
+         //data: ['收入', '差旅费支出'],
+     	top:'15%',
+     	textStyle:{
+     		//fontSize:fontsize,
+     	},
+     	
+       },
+       xAxis: [
+         {
+           type: 'category',
+           axisTick: {
+             alignWithLabel: true
+           },
+     	// textStyle:{ fontSize:fontsize,},
+           // prettier-ignore
+           data: ["1月","2月","3月","4月","5月","6月","7月","8月","9月","11月","12月"]
+         },
+     			
+       ],
+       yAxis: [
+         {
+     		
+           type: 'value',
+           name: '收入\n(万元）',
+           position: 'left',
+           alignTicks: true,
+           axisLine: {
+             show: true,
+           
+           },
+     	  axisLabel:{
+     		 // textStyle:{ fontSize:fontsize+3,},
+     		  nameTextStyle:{
+     		  	//				   fontSize:fontsize,
+     		  },
+     	  },
+           
+         },
+     	
+     	{
+     		
+           type: 'value',
+           name: '差旅费支出\n(万元）',
+          // position: '',
+           alignTicks: true,
+     	   axisLabel:{
+     	   					 
+     	   },
+           axisLine: {
+             show: true,
+           },
+         },
+        
+       ],
+       series: [
+         {
+           name: '证书差错率（校准）',
+           type: 'bar',
+           data: [1,1,1,1,1,1,1,1,1,1,1,1,],
+         },
+         {
+           name: '证书差错率（强检）',
+           type: 'bar',
+          // yAxisIndex: 1,
+           data: [1,1,1,1,1,1,1,1,1,1,1,1,],
+         },
+     	{
+     	  name: '证书差错率（汇总）',
+     	  type: 'bar',
+     	//  yAxisIndex: 1,
+     	  data: [1,1,1,1,1,1,1,1,1,1,1,1,],
+     	},
+     	{
+     	  name: '服务不及时率（校准）',
+     	  type: 'bar',
+     	//  yAxisIndex: 1,
+     	  data: [1,1,1,1,1,1,1,1,1,1,1,1,],
+     	},
+     	{
+     	  name: '服务不及时率（强检）',
+     	  type: 'bar',
+     	//  yAxisIndex: 1,
+     	  data: [1,1,1,1,1,1,1,1,1,1,1,1,],
+     	},
+     	{
+     	  name: '服务不及时率（汇总）',
+     	  type: 'bar',
+     	//  yAxisIndex: 1,
+     	  data: [1,1,1,1,1,1,1,1,1,1,1,1,],
+     	},
+        
+       ]
+      },true);
+
+      // 使用刚指定的配置项和数据显示图表。
+     // myChart.setOption(option);
+    </script>
+  </body>
+</html>

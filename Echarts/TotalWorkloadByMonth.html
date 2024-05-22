@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ECharts</title>
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="echarts.js"></script>
+  </head>
+  <body>
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById('main'));
+		var fontsize = 7;
+      // 指定图表的配置项和数据
+      myChart.setOption({
+      	
+    title: {
+       //show: IsShow,
+       text: "计价工作量",
+       // left: "30%",
+    		  left:"30%",
+       textStyle: {
+         fontSize: fontsize + 2,
+       },
+     },
+    
+     tooltip: {
+       trigger: "axis",
+       confine: true,
+    		alwaysShowContent: false, 
+       textStyle: {
+         align: "left",
+    			 lineHeight: '500', 
+         fontSize: fontsize+2,
+       },
+    
+    //    formatter: function (params) {
+    //      var arrYear = new Array(3);
+    //      for (let i = 0; i < 3; i++) {
+    //        arrYear[i] = xaxisData[i];
+    //      }
+    //      //console.log(params)
+    
+    //      // alert(params[0].name)
+    //      let str = "",
+    //        total = 0.0;
+    //      if (params[0].name == arrYear[2]) {
+    //        str += "目标任务" + ": " + params[0].data + "</br>";
+    //      }
+    //      for (var i = 3; i > 0; i--) {
+    //        total += parseFloat(params[i].data);
+    //        str +=
+    // 				params[i].name+" " +
+    //          params[i].marker +
+    //          params[i].seriesName +
+    //          ":" +
+    //          params[i].data +
+    //          "</br>";
+    //      }
+    //      total = total.toFixed(4);
+    //      if (params[0].name == arrYear[2]) {
+    //        var LastYearTotal = 0;
+    //        var ThisYearTotal = 0;
+    //        for (var i = 3; i <= 5; i++)
+    //          LastYearTotal += seriesData[i].data[0];
+    //        for (var i = 6; i <= 8; i++)
+    //          ThisYearTotal += seriesData[i].data[0];
+    //        var complateRate = (ThisYearTotal / params[0].data) * 100;
+    //        var growthRate = (ThisYearTotal / LastYearTotal) * 100 - 100;
+    //        complateRate = complateRate.toFixed(2);
+    //        growthRate = growthRate.toFixed(2);
+    //      }
+    //      str += "合计: " + total + "<br>";
+    //      if (params[0].name == arrYear[2]) {
+    //        str += "完成进度:" + complateRate + "%" + "<br>";
+    //        str += "同比增长:" + growthRate + "%" + "<br>";
+    //      } else {
+    //      }
+    
+    //      return str;
+    //    },
+       //         axisPointer: {
+       //             type: 'line', //采用竖线定位方式
+       //             snap: true, // 设置snap为true
+       //             label: {
+       //                 formatter: function (params) {
+    
+       //                     if (params.seriesData.length === 0) {
+       //                         window.mouseCurValue = params.value;
+    
+       //                     }
+       //                 }
+       //             }
+       //         },
+       //         formatter: function (params) {
+       //           var arrYear = new Array(3);
+       //             for(let i=0;i<3;i++){
+       //                 arrYear[i] = xaxisData[i]
+       //             };
+       //             let year = window.mouseCurValue;
+       //             if(year===3)year=2;
+       //             let yearIndex = arrYear.indexOf(year); //返回所指年份在年份数组中的下标
+       //             let str='';let num=0;//tooltip模板和合计
+       // 		let length=params.length;
+       //      let numrate=0;let suma=0;let sumb=0;
+       //      console.log(params);
+       //     for(var j=0;j<length/3;j++){
+       //       suma+=Number(params[j].value);
+       //       sumb+=Number(params[length-1-j].value);
+       //     }
+       //     numrate=sumb*100/suma;
+       //     numrate=numrate.toFixed(2);
+       //     numrate+='%';
+       // 		let leftloopend=yearIndex*length/3;
+       // 		let rightloopend=(yearIndex+1)*length/3;
+       // 		for(var j=rightloopend-1;j>=leftloopend;j--){
+       // 		str+=arrYear[yearIndex]+params[j].marker+params[j].seriesName+':'+params[j].value+'</br>';
+       // 			num+=Number(params[j].value);
+       // 		}
+       //            num=num.toFixed(4);
+    
+       // return str+'合计:'+num+'<br>'+arrYear[2]+'/'+arrYear[0]+':'+numrate;
+       //         },
+       //     //     formatter: function (params) {
+       //     //         var arrYear = new Array(3); //保存前三个年份（2021 2022 2023）
+       //     //         for(let i=0;i<3;i++){
+       //     //             arrYear[i] = xaxisData[i]
+       //     //         };
+       //     //         let year = window.mouseCurValue;
+       //     //         let yearIndex = arrYear.indexOf(year); //返回所指年份在年份数组中的下标
+    
+       //     //         let xingping = yearIndex >0 ? 3*yearIndex:0; //校准对应params[0]/[2]/[4],强检对应[1][3][5],将年份数组下标映射为params中的下标
+       //     //         let xp = params[xingping].data;
+       //     //         let qj = params[xingping+1].data;
+       //     //         let j = params[xingping+2].data;//例如params[2]是2022年校准，params[3]就是2022年强检
+    
+       //     //         let res = "";
+    
+       //     //         res = (year + params[xingping].marker + '型评' + ":" + Number(xp) + "<br/>"+year + params[xingping+1].marker + '强检' + ":" + Number(qj) + "<br/>"+
+       //     //         year+ params[xingping+2].marker + '校准(检测)' + ":" + Number(j) + "<br/>");
+    
+       //     //         return res;
+       //     //     },
+     },
+    
+     legend: {
+       show: false,
+       orient: "vertical",
+       x: "right",
+    
+       fontSize: fontsize,
+       itemHeight: 8,
+       itemWidth: 18,
+     },
+     grid: {
+       left: "4%",
+       right: "4%",
+       bottom: "6%",
+       top: "20%",
+       containLabel: true,
+     },
+     xAxis: [
+       {
+         type: "category",
+         axisLabel: {
+           interval: 0,
+           textStyle: {
+             fontSize: fontsize,
+           },
+         },
+         data: ["2021","2022","实收","实收（折算后）","工作量"],
+         axisLine: { show: false },
+         axisTick: { show: false },
+         splitArea: { show: false },
+         splitLine: { show: false },
+       },
+       {
+         type: "category",
+         axisLine: { show: false },
+         axisTick: { show: false },
+         axisLabel: { show: false },
+         splitArea: { show: false },
+         splitLine: { show: false },
+         data: ["2021","2022","实收","实收（折算后）","工作量"],
+       },
+     ],
+     yAxis: [
+       {
+         axisLine: {
+           show: true,
+         },
+         type: "value",
+         position: "left",
+         name: "收入\n(万元)）",
+         axisLabel: {
+           textStyle: {
+             fontSize: fontsize,
+           },
+         },
+         nameTextStyle: {
+           fontSize: fontsize,
+         },
+       },
+     ],
+    
+     series: [
+       
+    		{
+    		  name: "免费",
+    		  type: "bar",
+    		  stack: "Ad",
+    		  xAxisIndex: 1,
+    		  //barGap:'64%',
+    		  data: [2,1,1,0,0],
+    		 // color:'#FAC858'
+    		},
+    		 {
+    		   name: "校准（检测）",
+    		   type: "bar",
+    		   stack: "Ad",
+    		   //barWidth: '20%',
+    		   // barGap:'64%',
+    		   xAxisIndex: 1,
+    		   data: [2,1,2,0,0],
+    		 },
+      
+    		  {
+    		    name: "综合",
+    		    type: "bar",
+    		    stack: "Ad",
+    		    //barWidth: '20%',
+    		    // barGap:'64%',
+    		    xAxisIndex: 1,
+    		    data: [2,3,4,0,0]
+    		  },
+			  {
+			    name: "实收",
+			    type: "bar",
+			    stack: "Ad",
+			    //barWidth: '20%',
+			    // barGap:'64%',
+			    xAxisIndex: 1,
+			    data: [0,0,0,3,0]
+			  },
+			  {
+			    name: "工作量",
+			    type: "bar",
+			    stack: "Ad",
+			    //barWidth: '20%',
+			    // barGap:'64%',
+			    xAxisIndex: 1,
+			    data: [0,0,0,0,4]
+			  },
+         
+          
+    {
+      name: "目标",
+      type: "bar",
+      z: "-1",
+      xAxisIndex: 0,
+      barWidth: "80%",
+      itemStyle: {
+        borderWidth: 1,
+        borderType: "dashed",
+        borderColor: "#000",
+        color: "#fff",
+      },
+    
+      data: [0,0,5,3,0]
+    },
+     ],
+      },true);
+
+      // 使用刚指定的配置项和数据显示图表。
+     // myChart.setOption(option);
+    </script>
+  </body>
+</html>
